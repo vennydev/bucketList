@@ -12,6 +12,7 @@ import BucketList from "./Components/BucketList";
 import Detail from "./Components/Detail";
 import NotFound from "./Components/NotFound";
 import AddListItem from "./Components/AddListItem";
+import Progress from "./Components/Progress";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
         <Title>내 버킷리스트</Title>
+        <Progress/>
         <Line />
       <Container>
         {/* Routing + Switch */}
