@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import {db} from "./firebase";
 
 // 모듈
 import {createBucket} from "./redux/modules/bucket";
@@ -22,6 +23,7 @@ function App() {
     dispatch(createBucket(text.current.value));
   }
 
+  console.log(db)
   return (
     <div className="App">
         <Title>내 버킷리스트</Title>
@@ -42,6 +44,9 @@ function App() {
         <Route component={NotFound}></Route>
       </Switch>
       </Container>
+      <button onClick={() => {
+        window.scrollTo({top : 0, left : 0, behavior: "smooth"})
+      }}>위로가기</button>
       <Input>
       <AddListItem text={text} addBucketList={addBucketList}/>
       </Input>
