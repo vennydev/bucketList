@@ -13,6 +13,7 @@ const BucketList = () => {
           <ItemStyle
             className="list_item"
             key={index}
+            completed={list.completed}
             onClick={() => {
                 history.push(`/detail/${index}`);
             }}
@@ -37,6 +38,7 @@ const ItemStyle = styled.div`
   padding: 16px;
   margin: 8px;
   background-color: aliceblue;
+  background-color: ${(props) => (props.completed ? "orange" : "aliceblue")};
 `;
 
 export default BucketList;

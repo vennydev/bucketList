@@ -10,9 +10,8 @@ const initialState = {
     { text: "매일 책읽기", completed: false },
     { text: "수영 배우기", completed: false },
     { text: "코딩하기", completed: false },
-  ],
+  ]
 };
-
 
 // action creator
 export const createBucket = (bucket) => {
@@ -30,24 +29,30 @@ export const updateBucket = (idx) => {
 // reducer
 export default function reducer(state = initialState, action = {}){
   switch (action.type) {
-    // do create
     case "bucket/CREATE": {
-      const new_bucket_list = [...state.list, action.bucket]
+      // do create
+      const new_bucket_list = [...state.list, { text: action.bucket, completed: false }];
       return { list : new_bucket_list}
     }
 
-    // do delete
     case "bucket/DELETE" : {
+      // do delete
       const new_bucket_list = state.list.filter((a,idx) => {
         return parseInt(action.idx) !== idx
       })
       return {list : new_bucket_list}
     }
 
-    // do delete
     case "bucket/UPDATE" : {
-      console.log("upadte reducer!")
-      return null
+      // do update
+      const new_bucket_list =state.list.map((l, idx) => {
+        if(parseInt(action.idx) === idx ){
+          return {...l, completed : true}
+        }else{
+          return l
+        }
+      })
+      return {list : new_bucket_list};
     }
     default:
       return state;

@@ -2,12 +2,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Route, Switch } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // 모듈
 import {createBucket} from "./redux/modules/bucket";
-// import { deleteBucket } from "./redux/modules/bucket";
 
 // 컴포넌트 
 import BucketList from "./Components/BucketList";
@@ -15,14 +13,14 @@ import Detail from "./Components/Detail";
 import NotFound from "./Components/NotFound";
 import AddListItem from "./Components/AddListItem";
 
-
 function App() {
   const dispatch = useDispatch();
   const text = React.useRef(null);
-
+  
   const addBucketList = () => {
     dispatch(createBucket(text.current.value));
   }
+
   return (
     <div className="App">
         <Title>내 버킷리스트</Title>

@@ -10,23 +10,21 @@ import { deleteBucket, updateBucket } from "../redux/modules/bucket";
 
 
 
-const Detail = ({deleteBucketList}) => {
+const Detail = () => {
     const history = useHistory();
     const params = useParams();
     const bucket_index = params.index;
     const bucket_lists = useSelector((state) => state.bucket.list);
-    console.log(bucket_lists)
-    const bucket_list = bucket_lists[bucket_index];
     const dispatch = useDispatch();
     return (
         <div>
-            <h3>{bucket_list[bucket_index].text}.</h3>
+            <h3>{bucket_lists[bucket_index].text}.</h3>
             <button onClick={() => {
+                history.push("/");
                 dispatch(updateBucket(bucket_index))
             }}>완료</button>
             <button onClick={() => {
                 history.push("/");
-
                 // sotre에 있는 deleteBucket 함수 실행
                 dispatch(deleteBucket(bucket_index))
             }}>삭제</button>
